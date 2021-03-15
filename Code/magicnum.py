@@ -1,3 +1,3 @@
 import magic
-def getmagic(f):
-    return (magic.from_file(f))
+def getmagic(_file):
+    return (magic.from_file(_file))#Simply pulling the magic number data from the file 

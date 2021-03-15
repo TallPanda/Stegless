@@ -1,8 +1,5 @@
 from subprocess import run
-from sys import argv
 import re
-f=argv[1]
-flagstart=argv[2]
-flagend=argv[3]
-a = str(run(["strings",f], capture_output=True).stdout)
-print(re.findall(f"{flagstart}.*?{flagend}",a))
+def strings(_file,flagstart,flagend):
+    a = str(run(["strings",_file], capture_output=True).stdout) #We're using the subprocess module to run strings and capturing the output
+    return(re.findall(f"{flagstart}.*?{flagend}",a)) #regex to search for everything matching our flag format
