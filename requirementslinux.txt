@@ -1,0 +1,10 @@
+Pillow
+pytesseract
+
+binwalk
+capstone
+pyqtgraph
+pycryptodome
+nose
+coverage
+cstruct
