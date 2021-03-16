@@ -1,3 +1,4 @@
 import binwalk
-for module in binwalk.scan(__file__,signature=True,quiet=False, extract=True):
-    print ("%s Results:" % module.name)
+def me(_file):
+    for module in binwalk.scan(_file,signature=True,quiet=False, extract=True):
+        print ("%s Results:" % module.name)

@@ -8,3 +8,4 @@ pycryptodome
 nose
 coverage
 cstruct
+py7zr

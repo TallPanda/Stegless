@@ -2,10 +2,10 @@ python-magic-bin
 Pillow
 pytesseract
 
-binwalk
 capstone
 pyqtgraph
 pycryptodome
 nose
 coverage
 cstruct
+py7zr
