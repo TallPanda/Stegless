@@ -5,7 +5,7 @@ except ImportError:
     import Image
 import pytesseract
 
-def tesseract(file_path):
+def ocr(file_path):
     
     image = Image.open(file_path)
     print(pytesseract.image_to_string(image))
