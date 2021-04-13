@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+SteglessImages
 .vs
 # C extensions
 *.so

@@ -4,6 +4,7 @@ from stegless.tesseract import ocr
 from stegless.bw import me as binwalk
 from stegless.flagfinder import find
 from sys import argv
+#from thirdparty.PCRT import pcrt as repair #third party png repair tool
 
 
 def fstrings(_file,flags="flag{",flage="}"):#Full Strings #Basically strings with a for loop for mutiple outputs

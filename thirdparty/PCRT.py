@@ -781,3 +781,7 @@ Version: %s
 		else:
 			parser.print_help()
 
+
+def pcrt(_file,_fileout="./"):
+	my_png=PNG(_file,_fileout,choices='y',mode=1)
+	my_png.CheckPNG()
