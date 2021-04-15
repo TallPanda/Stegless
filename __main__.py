@@ -4,6 +4,7 @@ from stegless.tesseract import ocr
 from stegless.bw import me as binwalk
 from stegless.flagfinder import find
 from sys import argv
+from stegless.RGBvalues import RGBFull 
 #from thirdparty.PCRT import pcrt as repair #third party png repair tool
 
 
