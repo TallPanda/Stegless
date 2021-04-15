@@ -8,8 +8,8 @@ from stegless.RGBvalues import RGBFull
 #from thirdparty.PCRT import pcrt as repair #third party png repair tool
 
 
-def fstrings(_file,flags="flag{",flage="}"):#Full Strings #Basically strings with a for loop for mutiple outputs
-    _ = find(strings(_file),flags,flage)
+def fstrings(_file,beginning="{",end="}"):#Full Strings #Basically strings with a for loop for mutiple outputs
+    _ = find(strings(_file),beginning,end)
     if _ == []:
                 print("Flag not found")
     else:
@@ -26,20 +26,20 @@ def focr(_file):#Full OCR #basically just ocr with try excepts
     except Exception as e:
         return(f"{e}\nOCR Failed")
 
-def binwalkies(_file, flags="flag{",flage="}"):# some cleaining up so main isnt stuffed
+def binwalkies(_file, beginning="{",end="}"):# some cleaining up so main isnt stuffed
     for _ in binwalk(_file): #Looping through the output of files to preform further actions
         print(focr(_))
         try:
-            fstrings(_,flags,flage)
+            fstrings(_,beginning,end)
             
         except Exception as e:
             print(f"{e}\n Flag not found")
 
-def main(_file, flags="flag{",flage="}"):#Yes I know flage,flags are redundant but its safer that way
+def main(_file, beginning="{",end="}"):#Yes I know end,beginning are redundant but its safer that way
     print (getmagic(_file))
     fstrings(_file)
     print(focr(_file))
-    binwalkies(_file, flags,flage)
+    binwalkies(_file, beginning,end)
     
 
 if __name__ == "__main__":
