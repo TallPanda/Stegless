@@ -16,12 +16,15 @@ def ocr(file_path, fleg=None):
     return(tes)
     
 
-def folderocr(folder):
+def folderocr(folder: str,flegs: list=None,_all: str=None):
     print(f"Beginning OCR Folder Scan on {folder}")
-    for filepath in glob.iglob(f'{folder}/'+r'*.png'):
+    for filepath in glob.iglob(f'{folder}/'+r'*.png'):## :Looks for pngs
         try:
             a =ocr(filepath, "Yis")
-            if any([_ in a for _ in ["{","}","ctf"] ]):
+            if _all:
+                with open("tessoutput.txt", 'a') as f:
+                    f.write(f"\n{a}     ::      {filepath}")
+            elif any([_ in a for _ in [flegs]]):##or statement on a list
                 with open("tessoutput.txt", 'a') as f:
                     f.write(f"\n{a}     ::      {filepath}")
         except Exception:
