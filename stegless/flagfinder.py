@@ -1,3 +1,6 @@
 import re
 def find(inp,flags,flage):
-    return(re.findall(f"{flags}.*?{flage}",inp))
+    out = []
+    for _ in inp:
+        out.append(re.findall(f"{flags}.*?{flage}",_))
+    return(out)

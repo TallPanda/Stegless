@@ -1,21 +1,23 @@
 from stegless.magicnum import getmagic
-from stegless.strings import strings
+from stegless.inhousestrings import strings
 from stegless.tesseract import ocr
 from stegless.bw import me as binwalk
 from stegless.flagfinder import find
 from sys import argv
-from stegless.RGBvalues import RGBFull 
+from stegless.RGBvalues import pallet
 import argh
 #from thirdparty.PCRT import pcrt as repair #third party png repair tool
 
 
 def fstrings(_file,beginning="{",end="}"):#Full Strings #Basically strings with a for loop for mutiple outputs
     _ = find(strings(_file),beginning,end)
-    if _ == []:
-                print("Flag not found")
-    else:
-        for __ in _:
-            print(f"Possiible flag: {__}")
+    for __ in _:
+        if __ == [] :
+            pass
+            # print("Flag not found")
+        else:
+            for ___ in __:
+                print(f"Possiible flag: {___}")
 
 def focr(_file):#Full OCR #basically just ocr with try excepts
     try:
@@ -36,12 +38,15 @@ def binwalkies(_file, beginning="{",end="}"):# some cleaining up so main isnt st
         except Exception as e:
             print(f"{e}\n Flag not found")
 
-def main(_file, beginning="{",end="}"):#Yes I know end,beginning are redundant but its safer that way
-    print (getmagic(_file))
-    fstrings(_file)
-    print(focr(_file))
-    binwalkies(_file, beginning,end)
-    
+def main(file, beginning="{",end="}"):#Yes I know end,beginning are redundant but its safer that way
+    "General scan Running binwalk, strings and returning metadata"
+    print (getmagic(file))
+    fstrings(file)
+    print(focr(file))
+    binwalkies(file, beginning,end)
+
+parser = argh.ArghParser()
+parser.add_commands([main,pallet])
 
 if __name__ == "__main__":
-    main(argv[1])
+    parser.dispatch()

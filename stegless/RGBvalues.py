@@ -1,10 +1,14 @@
+from typing import Optional
+from argh.decorators import arg
 import numpy
 from PIL import Image
 import os
 import errno
-
-def RGBFull(_file,output="./",i=None,full=None):
-    with Image.open(_file) as a:
+def pallet(file,output="./",bitplane=None,full=None):
+    """Bitplane is the bitplane to start from INT 0-256
+Full runs all bitplanes Bool True or False 
+Only works if pngs mode is P simply runs the rbg planes if mode is rgba or rgb"""
+    with Image.open(file) as a:
         try:
             os.makedirs(f'{output}SteglessImages/Full')
             os.makedirs(f'{output}SteglessImages/Advanced')
@@ -17,16 +21,16 @@ def RGBFull(_file,output="./",i=None,full=None):
             b = a.getpalette()
             arrw = [255 for _ in range(len(b))]
             arr = [0 for _ in range(len(b))]
-        if i and a.mode == 'P': ### advanced
+        if bitplane and a.mode == 'P': ### advanced
             print("Type P")
             for _ in range(256):
-                f = i*3
+                f = bitplane*3
                 E = 768 - f-(_*3)
                 x = list(arr[:f] +arrw[f:f+(_*3)] +arr[:E])
                 if len(x)>768:
                     break
                 a.putpalette(x)
-                a.save(f"{output}SteglessImages/Advanced/P{i}_{_}.png")
+                a.save(f"{output}SteglessImages/Advanced/P{bitplane}_{_}.png")
         elif a.mode =='P': ### initial run
             for i in range( 256):
                 f = i*3
