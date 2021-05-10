@@ -63,46 +63,46 @@ def stringstest():
         for _s in range(len(a)):
             for _s_ in range(len(a)):
                 try:
-                    print(a[s]+a[_s]+a[_s_])
+                    temp =(a[s]+a[_s]+a[_s_])
                 except Exception as e:
                     print(e)
                     #file
                 try:
-                    me(s)
+                    me(temp)
                 except Exception as e:
                     print(e)
                 try:
-                    strings(s)
+                    strings(temp)
                 except Exception as e:
                     print(e)
                 try:
-                    getmagic(s)
+                    getmagic(temp)
                 except Exception as e:
                     print(e)
                 try:
-                    pallet(s)
+                    pallet(temp)
                 except Exception as e:
                     print(e)
                 try:
-                    steghide(s)
+                    steghide(temp)
                 except Exception as e:
                     print(e)
                 try:
-                    openstego(s)
+                    openstego(temp)
                 except Exception as e:
                     print(e)
                 try:
-                    ocr(s)
+                    ocr(temp)
                 except Exception as e:
                     print(e)
                     #folder
                 try:
-                    folderocr(s)
+                    folderocr(temp)
                 except Exception as e:
                     print(e)
                     #inp
                 try:
-                    find(s)
+                    find(temp)
                 except Exception as e:
                     print(e)
 
