@@ -1,7 +1,8 @@
 import re
-def strings(_file):
+def strings(file):
+    assert(isinstance(file,str)),f"Path(AKA folder) not a string\nFolder: {file}\nType: {type(file)}"
     a = []
-    with open(f"{_file}", "rb") as f:
+    with open(f"{file}", "rb") as f:
         _ = f.readable()
         count = 0
         line = -1

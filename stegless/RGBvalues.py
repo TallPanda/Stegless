@@ -4,7 +4,9 @@ import numpy
 from PIL import Image
 import os
 import errno
-def pallet(file,output="./",bitplane=None,full=None):
+def pallet(file:str, output: str="./", bitplane: int=None, full: bool=None):
+    assert(isinstance(file,str)),f"Path(AKA file) not a string\nFile: {file}\nType: {type(file)}"
+    assert(isinstance(out,str)),f"Path(AKA out) not a string\nOut: {out}\nType: {type(out)}"
     """Bitplane is the bitplane to start from INT 0-256
 Full runs all bitplanes Bool True or False 
 Only works if pngs mode is P simply runs the rbg planes if mode is rgba or rgb"""
