@@ -1,7 +1,8 @@
 python-magic-bin
 Pillow
 pytesseract
-python-magic 
+python-magic
+binwalk
 
 capstone
 pyqtgraph

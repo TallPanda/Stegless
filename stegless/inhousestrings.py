@@ -1,5 +1,5 @@
 import re
-def strings(file):
+def strings(file: str):
     """
     creates an itterable containing all strings
     """
