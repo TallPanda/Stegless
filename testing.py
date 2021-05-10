@@ -1,6 +1,7 @@
 from stegless.magicnum import getmagic
-from stegless.tesseract import ocr
+from stegless.inhousestrings import strings
 from stegless.flagfinder import find
+from stegless.bw import me
 """
 bw.py: me
 flagfinder.py: find
@@ -10,3 +11,7 @@ RGBvalues.py: pallet
 steg_tools.py: steghide openstego
 tesseract.py: ocr folderocr
 """
+me()
+find()
+strings()
+getmagic()
