@@ -2,6 +2,7 @@ Pillow
 pytesseract
 python-magic
 binwalk
+argh
 
 capstone
 pyqtgraph
