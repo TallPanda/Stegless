@@ -1,6 +1,6 @@
 from stegless.magicnum import getmagic
 from stegless.inhousestrings import strings
-from stegless.tesseract import ocr
+from stegless.tesseract import ocr,folderocr
 from stegless.bw import me as binwalk
 from stegless.flagfinder import find
 from sys import argv
@@ -46,7 +46,7 @@ def main(file, beginning="{",end="}"):#Yes I know end,beginning are redundant bu
     binwalkies(file, beginning,end)
 
 parser = argh.ArghParser()
-parser.add_commands([main,pallet])
+parser.add_commands([main,pallet,folderocr,ocr,getmagic])
 
 if __name__ == "__main__":
     parser.dispatch()
