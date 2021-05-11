@@ -8,9 +8,10 @@ def ocr(file:str, no_out: bool=None) -> str:
     # if not fleg: I forgot why i had this so commeneted for now
     #     print(f"Beginning OCR Scan on {file}")
     image = Image.open(file)
-    tes = re.sub("\s","",pytesseract.image_to_string(image))
+    tes = f"Passed on {no_out}"#re.sub("\s","",pytesseract.image_to_string(image))
     image.close()
     if not no_out:
+        return(f"Failed on {no_out}")
         with open("tessoutput.txt", 'a') as f:
             f.write(f"\n{tes}       ::      {file}")
     return(tes)

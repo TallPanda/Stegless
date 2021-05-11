@@ -6,8 +6,11 @@ import os
 import errno
 def pallet(file:str, output: str="./", bitplane: int=None, full: bool=None):
     assert(isinstance(file,str)),f"Path(AKA file) not a string\nFile: {file}\nType: {type(file)}"
-    assert(isinstance(out,str)),f"Path(AKA out) not a string\nOut: {out}\nType: {type(out)}"
-    """Bitplane is the bitplane to start from INT 0-256
+    assert(isinstance(output,str)),f"Path(AKA output) not a string\nOutput: {output}\nType: {type(output)}"
+    if bitplane:
+        assert(isinstance(bitplane,int)),f"Bitplane not a string\nbitplane: {bitplane}\nType: {type(bitplane)}"
+        assert(bitplane<=255 and bitplane>=0),f"Bitplane: {bitplane} cannot be above 255 or bellow 0"
+    """Bitplane is the bitplane to start from INT 0-255 inclusive
 Full runs all bitplanes Bool True or False 
 Only works if pngs mode is P simply runs the rbg planes if mode is rgba or rgb"""
     with Image.open(file) as a:

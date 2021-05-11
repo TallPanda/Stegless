@@ -7,7 +7,7 @@ SteglessImages
 # C extensions
 *.so
 testimages/
-tessoutput.txt
+tessoutput*.txt
 # Distribution / packaging
 .Python
 build/
