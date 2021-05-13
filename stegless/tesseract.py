@@ -23,7 +23,7 @@ def folderocr(folder: str,start: str="{", end: str="}", all: bool=None):
     print(f"Beginning OCR Folder Scan on {folder}")
     ftypes= ["jpg","png", "jpeg", "png", "gif", "bmp", "tiff"]
     for ftype in ftypes:
-        for file in glob.iglob(f'{folder}/'+f'*.{ftype}'):## :Looks for pngs
+        for file in glob.iglob(f'{folder}/'+f'*.{ftype}'):## :Looks for images
             try:
                 a =ocr(file, "Yis")
                 if all:
@@ -31,6 +31,8 @@ def folderocr(folder: str,start: str="{", end: str="}", all: bool=None):
                         f.write(f"\n{a}     ::      {file}")
                 else:
                     with open("tessoutput.txt", 'a') as f:
-                        f.write(f"\n{a}     ::      {file}")
+                        a = re.findall(f"{start}.*?{end}",a)
+                        if a:
+                            f.write(f"\n{a}     ::      {file}")
             except Exception as e:
                 print(f"OCR failed on {file}\n{e}")
