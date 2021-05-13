@@ -8,7 +8,11 @@ def pallet(file:str, output: str="./", bitplane: int=None, full: bool=None):
     assert(isinstance(file,str)),f"Path(AKA file) not a string\nFile: {file}\nType: {type(file)}"
     assert(isinstance(output,str)),f"Path(AKA output) not a string\nOutput: {output}\nType: {type(output)}"
     if bitplane:
-        assert(isinstance(bitplane,int)),f"Bitplane not a string\nbitplane: {bitplane}\nType: {type(bitplane)}"
+        try:
+            bitplane = int(bitplane)
+        except Exception as e:
+            print(f"Bitplane not a int\nbitplane: {bitplane}\nType: {type(bitplane)}")
+        assert(isinstance(bitplane,int)),f"Bitplane not a int\nbitplane: {bitplane}\nType: {type(bitplane)}"
         assert(bitplane<=255 and bitplane>=0),f"Bitplane: {bitplane} cannot be above 255 or bellow 0"
     """Bitplane is the bitplane to start from INT 0-255 inclusive
 Full runs all bitplanes Bool True or False 
