@@ -9,8 +9,8 @@ import argh
 #from thirdparty.PCRT import pcrt as repair #third party png repair tool
 
 
-def fstrings(_file,beginning="{",end="}"):#Full Strings #Basically strings with a for loop for mutiple outputs
-    _ = find([out for out in strings(_file)],beginning,end)
+def fstrings(file,beginning="{",end="}"):#Full Strings #Basically strings with a for loop for mutiple outputs
+    _ = find([out for out in strings(file)],beginning,end)
     for __ in _:
         if __ == [] :
             pass
@@ -19,9 +19,9 @@ def fstrings(_file,beginning="{",end="}"):#Full Strings #Basically strings with 
             for ___ in __:
                 print(f"Possiible flag: {___}")
 
-def focr(_file):#Full OCR #basically just ocr with try excepts
+def focr(file):#Full OCR #basically just ocr with try excepts
     try:
-            _ = ocr(_file)
+            _ = ocr(file)
             if not _ == None and not _ == "":
                 return(f"Possible flags: {_}\nOCR finished")
             else:
@@ -29,8 +29,8 @@ def focr(_file):#Full OCR #basically just ocr with try excepts
     except Exception as e:
         return(f"{e}\nOCR Failed")
 
-def binwalkies(_file, beginning="{",end="}"):# some cleaining up so main isnt stuffed
-    for _ in binwalk(_file): #Looping through the output of files to preform further actions
+def binwalkies(file, beginning="{",end="}"):# some cleaining up so main isnt stuffed
+    for _ in binwalk(file): #Looping through the output of files to preform further actions
         print(focr(_))
         try:
             fstrings(_,beginning,end)
