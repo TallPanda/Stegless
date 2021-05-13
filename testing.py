@@ -135,7 +135,7 @@ def listtest(a):
         [{}],
         [[None]],
         ["aaaa{s}","}","{}","{"],
-        allhexlatin()
+        a
     ]
     for l in listy:
         try:

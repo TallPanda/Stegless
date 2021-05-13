@@ -10,7 +10,7 @@ import argh
 
 
 def fstrings(_file,beginning="{",end="}"):#Full Strings #Basically strings with a for loop for mutiple outputs
-    _ = find(strings(_file),beginning,end)
+    _ = find([out for out in strings(_file)],beginning,end)
     for __ in _:
         if __ == [] :
             pass
