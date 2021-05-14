@@ -1,5 +1,5 @@
 import binwalk
-def me(file:str)-> list:
+def binw(file:str)-> list:
     assert(isinstance(file,str)),f"Path(AKA file) not a string\nFile: {file}\nType: {type(file)}"
     files =[]
     print("Beginning Binwalk Scan")

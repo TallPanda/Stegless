@@ -2,12 +2,12 @@
 from stegless.magicnum import getmagic
 from stegless.inhousestrings import strings
 from stegless.flagfinder import find
-from stegless.bw import me
+from stegless.bw import binw
 from stegless.RGBvalues import pallet
 from stegless.steg_tools import steghide,openstego
 from stegless.tesseract import ocr,folderocr
 """
-bw.py: me
+bw.py: binw
 flagfinder.py: find
 inhousestrings.py: strings
 magicnum.py: getmagic
@@ -15,7 +15,7 @@ RGBvalues.py: pallet
 steg_tools.py: steghide openstego
 tesseract.py: ocr folderocr
 Variables
-file:   me, string, getmagic, pallet, steghide, openstego, ocr string
+file:   binw, string, getmagic, pallet, steghide, openstego, ocr string
 folder: folderocr string
 start,end: find, folderocr string
 no_out: ocr bool
@@ -26,13 +26,13 @@ inp: find list
 
 positional variables
 
-file: me, strings, getmagic, pallet, steghide, openstego, ocr string
+file: binw, strings, getmagic, pallet, steghide, openstego, ocr string
 folder: folderocr string
 inp: find list
 
 variable type
 string: 
-    file:   me, string, getmagic, pallet, steghide, openstego, ocr
+    file:   binw, string, getmagic, pallet, steghide, openstego, ocr
     folder: folderocr
     start,end: find, folderocr
 list:
@@ -90,9 +90,9 @@ def stringstest(a):
     for s in a:
         #file
         try:
-            me(s)
+            binw(s)
         except Exception as e:
-            print(e,"\nme")
+            print(e,"\nbinw")
         try:
             strings(s)
         except Exception as e:
@@ -160,8 +160,8 @@ def inttest():
             print(e,i)
 
 def commands():
-    cmdnames = ["me", "strings", "getmagic", "pallet", "steghide", "openstego", "ocr"]
-    cmnds = [me, strings, getmagic, pallet, steghide, openstego, ocr]
+    cmdnames = ["binw", "strings", "getmagic", "pallet", "steghide", "openstego", "ocr"]
+    cmnds = [binw, strings, getmagic, pallet, steghide, openstego, ocr]
     fakefiles = [f"testimages/a.{_}" for _ in ["jpg","png","gif"]]
     for name,cmd in zip(cmdnames,cmnds):
         for f in fakefiles:

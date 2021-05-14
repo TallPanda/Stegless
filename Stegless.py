@@ -1,7 +1,7 @@
 from stegless.magicnum import getmagic
 from stegless.inhousestrings import strings
 from stegless.tesseract import ocr,folderocr
-from stegless.bw import me as binwalk
+from stegless.bw import binw
 from stegless.flagfinder import find
 from stegless.RGBvalues import pallet
 import argh
@@ -29,7 +29,7 @@ def focr(file):#Full OCR #basically just ocr with try excepts
         return(f"{e}\nOCR Failed")
 
 def binwalkies(file, beginning="{",end="}"):# some cleaining up so main isnt stuffed
-    for _ in binwalk(file): #Looping through the output of files to preform further actions
+    for _ in binw(file): #Looping through the output of files to preform further actions
         print(focr(_))
         try:
             fstrings(_,beginning,end)
