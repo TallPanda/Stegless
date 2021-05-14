@@ -14,6 +14,6 @@ def strings(file: str):
             if line ==_line:
                 return range(1)
             s = f.readline()
-            for num,stringz in enumerate([re.sub(r"[^\x20-\x7e\xa0-\xff]","",_) for _ in re.split("\s",s.decode("latin1"))]):
+            for stringz in [re.sub(r"[^\x20-\x7e\xa0-\xff]","",_) for _ in re.split("\s",s.decode("latin1"))]:
                 if not stringz in a and len(stringz)>=4:
                     yield(stringz)
