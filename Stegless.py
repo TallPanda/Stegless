@@ -3,7 +3,6 @@ from stegless.inhousestrings import strings
 from stegless.tesseract import ocr,folderocr
 from stegless.bw import me as binwalk
 from stegless.flagfinder import find
-from sys import argv
 from stegless.RGBvalues import pallet
 import argh
 #from thirdparty.PCRT import pcrt as repair #third party png repair tool
