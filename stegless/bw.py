@@ -5,12 +5,18 @@ def binw(file:str)-> list:
     print("Beginning Binwalk Scan")
     for module in binwalk.scan(file,signature=True,quiet=False, extract=True):
         for results in module.results:
-            try:
-                files = module.extractor.output[results.file.path].extracted[list(module.extractor.output[results.file.path].extracted)[0]].files
-                for f in files:
-                    if not f in files:
-                        files.append(f)
-            except Exception as e:
-                print(e)
+            temp = results.file.path
+            if not temp in files:
+                files.append(temp)
+            # try:
+            #     temp = module.extractor.output[results.file.path]## name of the result extracted-> dict
+            #     file = temp.extracted.values()[0].files# list of files for result -- we expect only one file but could have changes depending on library code its not clearly doccument
+            #     print(list(temp.extracted.values())[0].files) 
+            #     files = temp.extracted[list(temp.extracted)[0]].files
+            #     for f in files:# Is needed incase of issues upstream
+            #         if not f in files:# Check to ensure file exists in dictionary
+            #             files.append(f)
+            # except Exception as e:
+            #     print(e)
     print("Finished Binwalk Scan")
     return(files)
