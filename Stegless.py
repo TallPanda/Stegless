@@ -9,35 +9,35 @@ import argh
 
 
 def fstrings(file,beginning="{",end="}"):#Full Strings #Basically strings with a for loop for mutiple outputs
-    _ = find([out for out in strings(file)],beginning,end)
-    for __ in _:
-        if __ == [] :
+    i = find([out for out in strings(file)],beginning,end)
+    for ii in i:
+        if ii == [] :
             pass
             # print("Flag not found")
         else:
-            for ___ in __:
-                print(f"Possiible flag: {___}")
+            for iii in ii:
+                print(f"Possiible flag: {iii}")
 
 def focr(file):#Full OCR #basically just ocr with try excepts
     try:
-            _ = ocr(file)
-            if not _ == None and not _ == "":
-                return(f"Possible flags: {_}\nOCR finished")
+            i = ocr(file)
+            if not i == None and not i == "":
+                return(f"Possible flags: {i_}\nOCR finished")
             else:
                 return("Nothing found")
     except Exception as e:
         return(f"{e}\nOCR Failed")
 
 def binwalkies(file, beginning="{",end="}"):# some cleaining up so main isnt stuffed
-    for _ in binw(file): #Looping through the output of files to preform further actions
-        print(focr(_))
+    for i in binw(file): #Looping through the output of files to preform further actions
+        print(focr(i))
         try:
-            fstrings(_,beginning,end)
+            fstrings(i,beginning,end)
             
         except Exception as e:
             print(f"{e}\n Flag not found")
 
-def main(file, beginning="{",end="}"):#Yes I know end,beginning are redundant but its safer that way
+def main(file, beginning="{",end="}"):
     "General scan Running binwalk, strings and returning metadata"
     print (getmagic(file))
     fstrings(file)

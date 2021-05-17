@@ -30,10 +30,10 @@ Only works if pngs mode is P simply runs the rbg planes if mode is rgba or rgb""
             arr = [0 for _ in range(len(b))]
             if bitplane: ### advanced
                 print(f"Advanced scan beginning at {bitplane}")
-                for _ in range(256):
+                for n in range(256):
                     f = bitplane*3
-                    E = 768 - f-(_*3)
-                    x = list(arr[:f] +arrw[f:f+(_*3)] +arr[:E])
+                    E = 768 - f-(n*3)
+                    x = list(arr[:f] +arrw[f:f+(n*3)] +arr[:E])
                     if len(x)>768:
                         break
                     a.putpalette(x)
