@@ -28,36 +28,36 @@ Only works if pngs mode is P simply runs the rbg planes if mode is rgba or rgb""
             b = a.getpalette()
             arrw = [255 for _ in range(len(b))]
             arr = [0 for _ in range(len(b))]
-        if bitplane and a.mode == 'P': ### advanced
-            print("Type P")
-            for _ in range(256):
-                f = bitplane*3
-                E = 768 - f-(_*3)
-                x = list(arr[:f] +arrw[f:f+(_*3)] +arr[:E])
-                if len(x)>768:
-                    break
-                a.putpalette(x)
-                a.save(f"{output}SteglessImages/Advanced/P{bitplane}_{_}.png")
-        elif a.mode =='P': ### initial run
-            for i in range( 256):
-                f = i*3
-                E = 768 - f-3
-                x = list(arr[:f] +arrw[f:f+3] +arr[:E])
-                if len(x)>768:
-                    break
-                a.putpalette(x)
-                a.save(f"{output}SteglessImages/Initial/P{i}.png")
-        elif a.mode =='P' and full:
-            print("Type P")
-            for _ in range(256):
-                for i in range( 256):
-                    f = i*3
+            if bitplane: ### advanced
+                print(f"Advanced scan beginning at {bitplane}")
+                for _ in range(256):
+                    f = bitplane*3
                     E = 768 - f-(_*3)
                     x = list(arr[:f] +arrw[f:f+(_*3)] +arr[:E])
                     if len(x)>768:
                         break
                     a.putpalette(x)
-                    a.save(f"{output}SteglessImages/Full/P{i}_{_}.png")
+                    a.save(f"{output}SteglessImages/Advanced/P{bitplane}_{_}.png")
+            elif full:
+                print("Full Scan")
+                for _ in range(256):
+                    for i in range( 256):
+                        f = i*3
+                        E = 768 - f-(_*3)
+                        x = list(arr[:f] +arrw[f:f+(_*3)] +arr[:E])
+                        if len(x)>768:
+                            break
+                        a.putpalette(x)
+                        a.save(f"{output}SteglessImages/Full/P{i}_{_}.png")
+            else: ### initial run
+                for i in range( 256):
+                    f = i*3
+                    E = 768 - f-3
+                    x = list(arr[:f] +arrw[f:f+3] +arr[:E])
+                    if len(x)>768:
+                        break
+                    a.putpalette(x)
+                    a.save(f"{output}SteglessImages/Initial/P{i}.png")
         elif a.mode =='RGBA':
             print("Type RGBA")
             b= a.split()
