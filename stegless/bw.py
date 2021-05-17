@@ -3,7 +3,7 @@ def binw(file:str)-> list:
     assert(isinstance(file,str)),f"Path(AKA file) not a string\nFile: {file}\nType: {type(file)}"
     files =[]
     print("Beginning Binwalk Scan")
-    for module in binwalk.scan(file,signature=True,quiet=False, extract=True):
+    for module in binwalk.scan(file,signature=True,quiet=False, extract=True):## returns 
         for results in module.results:
             temp = results.file.path
             if not temp in files:

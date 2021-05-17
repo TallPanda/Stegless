@@ -18,14 +18,12 @@ def pallet(file:str, output: str="./", bitplane: int=None, full: bool=None):
 Full runs all bitplanes Bool True or False 
 Only works if pngs mode is P simply runs the rbg planes if mode is rgba or rgb"""
     with Image.open(file) as a:
-        try:
-            os.makedirs(f'{output}SteglessImages/Full')
-            os.makedirs(f'{output}SteglessImages/Advanced')
-            os.makedirs(f'{output}SteglessImages/Initial')
-            os.makedirs(f'{output}SteglessImages/RGBA')
-        except OSError as e:
-            if e.errno != errno.EEXIST:
-                raise
+        for _ in ['Full','Advanced','Initial','RGBA']:
+            try:
+                os.makedirs(f'{output}SteglessImages/{_}')
+            except OSError as e:
+                if e.errno != errno.EEXIST:
+                    raise
         if a.mode == 'P':
             b = a.getpalette()
             arrw = [255 for _ in range(len(b))]
