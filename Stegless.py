@@ -9,20 +9,20 @@ import argh
 
 
 def fstrings(file,beginning="{",end="}"):#Full Strings #Basically strings with a for loop for mutiple outputs
-    i = find([out for out in strings(file)],beginning,end)
-    for ii in i:
-        if ii == [] :
+    generatorOutput = find([out for out in strings(file)],beginning,end)
+    for rList in generatorOutput:
+        if rList == [] :
             pass
             # print("Flag not found")
         else:
-            for iii in ii:
-                print(f"Possiible flag: {iii}")
+            for line in rList:
+                print(f"Possiible flag: {line}")
 
 def focr(file):#Full OCR #basically just ocr with try excepts
     try:
             i = ocr(file)
             if not i == None and not i == "":
-                return(f"Possible flags: {i_}\nOCR finished")
+                return(f"Possible flags: {i}\nOCR finished")
             else:
                 return("Nothing found")
     except Exception as e:
@@ -33,7 +33,6 @@ def binwalkies(file, beginning="{",end="}"):# some cleaining up so main isnt stu
         print(focr(i))
         try:
             fstrings(i,beginning,end)
-            
         except Exception as e:
             print(f"{e}\n Flag not found")
 
@@ -45,7 +44,7 @@ def main(file, beginning="{",end="}"):
     binwalkies(file, beginning,end)
 
 parser = argh.ArghParser()
-parser.add_commands([main,pallet,folderocr,ocr,getmagic])
+parser.add_commands([main,pallet,folderocr,ocr,getmagic,binw,strings])
 
 if __name__ == "__main__":
     parser.dispatch()

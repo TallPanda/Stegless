@@ -13,7 +13,7 @@ sudo apt install python python2 python-pip python2-pip
 
 ## Third Party Python Scripts
 PCRT - [Github](https://github.com/sherlly/PCRT)
-Included under the third party directory with minor modifications
+Included under the third party directory with minor modifications## no longer used to be removed
 
 ## How to use 
 python Stegless.py main file

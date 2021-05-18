@@ -7,8 +7,8 @@ def find(inp: list,start: str="{",end: str="}")-> list:
     if start and end:
         assert(isinstance(start,str) and isinstance(end,str)),f"Start or End not a string\nStart: {start}\nType: {type(start)}\nEnd: {end}\nType: {type(end)}"
     out = []
-    for _ in inp:
-        temp = re.findall(f"{start}.*?{end}",_)
+    for line in inp:
+        temp = re.findall(f"{start}.*?{end}",line)
         if temp:
             out.append(temp)
     return(out)
