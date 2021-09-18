@@ -46,7 +46,7 @@ def pallet(file:str, output: str="./", bitplane: int=None, full: bool=None):
     """Bitplane is the bitplane to start from INT 0-255 inclusive
 Full runs all bitplanes Bool True or False"""
     with Image.open(file) as a:
-        for name in ["Full","Advanced","initial"]:
+        for name in ["Full","Advanced","Initial"]:
             try:## testing if direcories exist
                 os.makedirs(f'{output}SteglessImages/{name}')
             except OSError as e:
