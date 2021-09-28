@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from stegless.magicnum import getmagic
 from stegless.inhousestrings import strings
 from stegless.tesseract import ocr,folderocr
