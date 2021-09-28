@@ -8,7 +8,9 @@ from numpy.lib import save
 def pstuff(img, output: str="./", bitplane: int=None, full: bool=None):
     if bitplane: ### advanced
         print("Type P")
-        for _ in range(50):# dropped to 50 since 255 was excessive
+        for _ in range(255):
+            if _+bitplane >= 255:
+                break
             colour = [random.randint(20,255), random.randint(20,255), random.randint(20,255)]
             x = [0 for i in range (bitplane*3)] + [c for i in range (_) for c in colour]+([0 for i in range (3*(255-bitplane-_))]) # randomly picks colours for second section to make it easier to differntiate between results
             if len(x)>768:
@@ -18,8 +20,10 @@ def pstuff(img, output: str="./", bitplane: int=None, full: bool=None):
             img.save(f"{output}SteglessImages/Advanced/P{bitplane}_{_}.png")
     elif full:## same as advanced but brute forces every possible start point
         print("Type P")
-        for _ in range(50):
+        for _ in range(255):
             for bitplane in range( 256):
+                if (_+ bitplane) >= 255:
+                    break
                 x = [0,0,0]*bitplane + ([random.randint(1,255) for i in range (3*_)])+([0,0,0]*(255-bitplane-_))
                 if len(x)>768:
                     break
